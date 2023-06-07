@@ -1,5 +1,6 @@
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./component/DefaultLayout";
+import LoginLayout from "./component/LoginLayout";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   return (
@@ -8,14 +9,15 @@ function App() {
         <Routes>
           {publicRoutes.map((route, index) => {
             const Page = route.component;
+            let Layout = (route.layout)? LoginLayout : DefaultLayout;
             return (
               <Route
                 key={index}
                 path={route.path}
                 element={
-                  <DefaultLayout>
+                  <Layout>
                     <Page />
-                  </DefaultLayout>
+                  </Layout>
                 }
               />
             );

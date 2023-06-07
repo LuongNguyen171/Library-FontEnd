@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Satoshi';
+    src: url(../../assets/Satoshi-Regular.otf)
+  }
+:root{
+
+}
+
+html{
+
+}
+
+body{
+    font-family: Satoshi;
+}   
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}

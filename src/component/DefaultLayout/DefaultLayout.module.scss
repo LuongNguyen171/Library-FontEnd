@@ -1,17 +1,13 @@
-.wrapper{
-
+.wrapper {
+ display: flex;
+ width: 100%;
 }
 
-.layout-default{
 
+.body {
+    width: 100%;
 }
 
-.body{
-    display: flex;
-}
-.header{
-
-}
-.content{
-
+.content {
+    margin: 24px 24px 0 24px;
 }
