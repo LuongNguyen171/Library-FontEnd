@@ -13,16 +13,16 @@ function Home() {
     // const token =  window.localStorage.getItem("token");
     // console.log(username)
 
-
-    // // const url = "http://localhost:8080/api/v1/books/list"
-    // // const config = {
-    // //     headers: { Authorization: `Bearer ${token}` }
-    // // };
+    const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwaHVvY0BnbWFpbC5jb20iLCJpYXQiOjE2ODYyODc5NzIsImV4cCI6MTY4NjM3NDM3Mn0.k1VpWI8O6L2xvHSiHVyckr68piUIfGujS42Yoy76Lqo'
+    const url = "http://localhost:8080/api/v1/books/delete?bookId=8"
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
     
     
-    // // axios.get(url, config)
-    // // .then(res => console.log(res))
-    // // .catch(err => console.log(err))
+    axios.delete(url, config)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
 
 
 

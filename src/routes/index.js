@@ -1,7 +1,7 @@
 // import Member from "../pages/member/member";
-import BorrowBook from "../pages/borrowBook/borowBook";
+import BorrowBookForm from "../component/borrowbook";
+import ReturnBookForm from "../component/returnbook";
 import Book from "../pages/book/book";
-import ReturnBook from "../pages/returnBook";
 import Login from "../pages/login";
 import Home from "../component/home";
 import LoginLayout from "../component/LoginLayout";
@@ -12,8 +12,8 @@ const publicRoutes = [
   { path: "/home", component: Home  },
   { path: "/member", component: Member  },
   { path: "/book", component: Book },
-  { path: "/borrowbook", component: BorrowBook },
-  { path: "/returnbook", component: ReturnBook },
+  { path: "/borrowbook", component: BorrowBookForm },
+  { path: "/returnbook", component:  ReturnBookForm},
 ];
 
 const privateRoutes = [];

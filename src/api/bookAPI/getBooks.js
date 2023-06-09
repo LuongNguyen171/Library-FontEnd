@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const getBooks = async () => {
+  const token = window.localStorage.getItem("token");
   try {
     const response = await axios.get(
       "http://localhost:8080/api/v1/books/list",
       {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdXlAZ21haWwuY29tIiwiaWF0IjoxNjg2MjgwNzYzLCJleHAiOjE2ODYzNjcxNjN9.5gNlaZvaVkvoSaUkRPdm0V_COF4oMijBvFiSxp79SX8`,
-        },
+          Authorization: `Bearer ${token}`,
+        }
       }
     );
     const data = response.data;

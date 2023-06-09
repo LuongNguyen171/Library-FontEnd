@@ -35,8 +35,8 @@
 
 .btn-signin {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid #6db33f;
+	background-color:#6db33f;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -117,9 +117,9 @@
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: rgb(28, 36, 52);
+	background: -webkit-linear-gradient(to right, rgb(28, 36, 52), rgb(28, 36, 52));
+	background: linear-gradient(to right, rgb(28, 36, 52), rgb(28, 36, 52));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -151,4 +151,9 @@
 .overlay-right {
 	right: 0;
 	transform: translateX(0);
+}
+.login-error{
+	padding: 5px;
+	font-size: 14px;
+	color: red;
 }

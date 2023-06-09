@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Login() {
-
+    
+    const [err,setErr] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -24,16 +25,20 @@ function Login() {
                 if (resp.status === 200) {
                     window.localStorage.setItem("name", resp.data['fullName']);
                     window.localStorage.setItem("token", resp.data['token']);
+                    setErr(false);
                     navigate('/book')
                 } else{
+                   
                     navigate('/login')
                 }
           })
           .catch(function (error) {
+            setErr(true)
             console.log(error);
           });
           
         } catch (error) {
+            setErr(false)
           console.log(error);
         }
       };
@@ -64,6 +69,9 @@ function Login() {
 
                         <a className={cx("forgot")} href="#">Forgot your password?</a>
                         <button className={cx('btn-signin')}>Sign In</button>
+                        {(
+                            err && <div className={cx('login-error')}>Đăng nhập thất bại!</div>
+                        )}
                     </form>
                 </div>
                 <div className={cx("overlay-container")}>

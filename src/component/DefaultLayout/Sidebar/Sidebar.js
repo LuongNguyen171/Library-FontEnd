@@ -4,7 +4,7 @@ import {BsBookHalf} from 'react-icons/bs'
 
 
 const cx = classNames.bind(styles);
-function Siderbar() {
+function Siderbar({handleCLick}) {
   return (
     <div className={cx('sidebar-wrapper')}>
       <div className={cx('sidebar-inner')}>
@@ -31,7 +31,7 @@ function Siderbar() {
                 <a href="#">Thống kê</a>
             </li >
             <li className={cx('sidebar-item')}>
-                <a href="login">Đăng xuất</a>
+                <a onClick={handleCLick}>Đăng xuất</a>
             </li>
           </ul>
         </nav>
