@@ -5,13 +5,15 @@ import ReturnBook from "../pages/returnBook";
 import Login from "../pages/login";
 import Home from "../component/home";
 import LoginLayout from "../component/LoginLayout";
+import Member from "../pages/member/member";
 const publicRoutes = [
   { path: "/", component: Login , layout: LoginLayout},
   { path: "/login", component: Login , layout: LoginLayout },
   { path: "/home", component: Home  },
+  { path: "/member", component: Member  },
   { path: "/book", component: Book },
-  { path: "/borrowBook", component: BorrowBook },
-  { path: "/returnBook", component: ReturnBook },
+  { path: "/borrowbook", component: BorrowBook },
+  { path: "/returnbook", component: ReturnBook },
 ];
 
 const privateRoutes = [];

@@ -1,0 +1,46 @@
+.wraper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .title{
+        align-items: center;
+    }
+    
+}
+.body{
+    
+     width: 100%;
+    
+     .btn_wrap{
+         text-align: end;
+         width: 100%;
+        
+     }
+    }
+    .btn{
+       color: white;
+       height: 40px;
+       width: 100px;
+       font-weight: 600;
+       outline: none;
+       margin-left: 10px;
+       background-color: green;
+       border: none;
+       border-radius: 5px;
+       .fontAdd_Icon{
+        margin-right: 3px;
+       }
+       &:hover{
+        opacity: 0.8;
+       }
+      
+    }
+    
+    
+

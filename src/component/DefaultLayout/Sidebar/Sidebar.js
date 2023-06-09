@@ -16,22 +16,22 @@ function Siderbar() {
           <div className={cx('title-sidebar')}>Menu</div>
           <ul className={cx('sidebar-menu')}>
             <li className={cx('sidebar-item')}>
-                <a href="#">Quản lý thành viên</a>
+                <a href="/member">Quản lý thành viên</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="#">Quản lý sách</a>
+                <a href="/book">Quản lý sách</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="#">Mượn sách</a>
+                <a href="/borrowbook">Mượn sách</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="#">Trả sách</a>
+                <a href="/returnbook">Trả sách</a>
             </li>
             <li className={cx('sidebar-item')}>
                 <a href="#">Thống kê</a>
             </li >
             <li className={cx('sidebar-item')}>
-                <a href="#">Đăng xuất</a>
+                <a href="login">Đăng xuất</a>
             </li>
           </ul>
         </nav>

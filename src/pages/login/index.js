@@ -24,7 +24,7 @@ function Login() {
                 if (resp.status === 200) {
                     window.localStorage.setItem("name", resp.data['fullName']);
                     window.localStorage.setItem("token", resp.data['token']);
-                    navigate('/home')
+                    navigate('/book')
                 } else{
                     navigate('/login')
                 }

@@ -54,7 +54,6 @@
     display: flex;
     align-items: center;
     text-align: left;
-    padding: 8px 16px;
     margin: 5px 0px;
     text-decoration-color: rgb(222, 228, 238);
     text-decoration-style: solid;
@@ -67,5 +66,7 @@
 
 .sidebar-item a{
     text-decoration: none;
-    color: rgb(222, 228, 238)
+    color: rgb(222, 228, 238);
+    padding: 8px 16px;
+    width: 100%;
 }

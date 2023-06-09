@@ -2,6 +2,7 @@ import { publicRoutes } from "./routes";
 import DefaultLayout from "./component/DefaultLayout";
 import LoginLayout from "./component/LoginLayout";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import BorrowBookForm from "./pages/borrowBook/borowBook";
 function App() {
   return (
     <Router>

@@ -1,0 +1,39 @@
+.wrapper{
+position: relative;
+width: 100%;
+
+  .table {
+    margin-top: 30px;
+      border-collapse: collapse;
+    }
+  .modalDelete{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+}
+ .table th,
+  .table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .icon_font{
+    display: flex;
+    margin: 0 20px;
+    // width: 50%;
+    justify-content: space-around;
+  }
+  .icon{
+    // margin-left: 5px;
+  }
+  .icon + .icon {
+  // margin-left: 15px; 
+  
+  }
+
+  .icon-delete{
+    color: red;
+  }
