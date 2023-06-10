@@ -1,7 +1,7 @@
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./component/DefaultLayout";
 import LoginLayout from "./component/LoginLayout";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 function App() {
   return (
     <Router>
@@ -13,12 +13,14 @@ function App() {
             return (
               <Route
                 key={index}
-                path={route.path}
+                path=  {route.path}
                 element={
-                  <Layout>
+               
+                   <Layout>
                     <Page />
                   </Layout>
-                }
+              
+                } 
               />
             );
           })}

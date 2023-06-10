@@ -2,12 +2,15 @@ import classNames from "classnames/bind";
 import styles from "./SidebarStyles.css";
 import {FaListUl, FaBook, FaShare, FaReply, FaBuffer,FaRegChartBar} from 'react-icons/fa'
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 function Siderbar() {
+  const navigation = useNavigate()
   useEffect(() => {
     const activePage = window.location.pathname;
-  
+    const jwt = window.localStorage.getItem('token');
+    if (!jwt){navigation('/login')}
     const navLinks = document.querySelectorAll('a')
     navLinks.forEach(link => {
         if (link.href.includes(`${activePage}`)){
@@ -16,7 +19,7 @@ function Siderbar() {
     console.log(link)
   });
   });
-  
+
   return (
     <div className={cx('sidebar-wrapper')}>
       <div className={cx('sidebar-inner')}>
