@@ -100,3 +100,33 @@ function Dialog({ message, onDialog ,title }) {
 }
 
 export default Dialog
+
+
+// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+// const Dialog = ({title , message ,props, danger}) => {
+//   const toggle = () => {
+//     props.toggleModal();
+//   };
+
+//   const confirmDeleteBook = () => {
+//     props.deleteBook(props.currentBook.bookId);
+//     toggle();
+//   };
+//   return (
+//     <Modal isOpen={props.isOpen} toggle={toggle}>
+//       <ModalHeader>{title}</ModalHeader>
+//       <ModalBody>{message}</ModalBody>
+//       <ModalFooter>
+//         <Button color="danger" onClick={confirmDeleteBook}>
+//           {danger}
+//         </Button>
+//         <Button color="secondary" onClick={toggle}>
+//           Hủy
+//         </Button>
+//       </ModalFooter>
+//     </Modal>
+//   );
+// };
+
+// export default Dialog;

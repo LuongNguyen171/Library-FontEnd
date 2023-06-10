@@ -1,38 +1,50 @@
 import classNames from "classnames/bind";
 import styles from "./SidebarStyles.css";
-import {BsBookHalf} from 'react-icons/bs'
-
+import {FaListUl, FaBook, FaShare, FaReply, FaBuffer,FaRegChartBar} from 'react-icons/fa'
+import { useEffect } from "react";
 
 const cx = classNames.bind(styles);
-function Siderbar({handleCLick}) {
+function Siderbar() {
+  useEffect(() => {
+    const activePage = window.location.pathname;
+  
+    const navLinks = document.querySelectorAll('a')
+    navLinks.forEach(link => {
+        if (link.href.includes(`${activePage}`)){
+            link.parentElement.classList.add('sidebar-active');
+        }
+    console.log(link)
+  });
+  });
+  
   return (
     <div className={cx('sidebar-wrapper')}>
       <div className={cx('sidebar-inner')}>
         <div className={cx('head-sidebar')}>
-            <BsBookHalf size={'32px'}/>
-            <div className={cx('branch-name')}>LibSmart</div>
+            <FaBuffer size={'32px'}/>
+            <div className={cx('branch-name')}>Library Smart</div>
         </div>
         <nav className={cx('sidebar-content')}>
           <div className={cx('title-sidebar')}>Menu</div>
           <ul className={cx('sidebar-menu')}>
             <li className={cx('sidebar-item')}>
-                <a href="/member">Quản lý thành viên</a>
+                <a href="/member"><FaListUl/> Quản lý thành viên</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="/book">Quản lý sách</a>
+                <a href="/book"><FaBook/> Quản lý sách</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="/borrowbook">Mượn sách</a>
+                <a href="/borrowbook"><FaShare/> Mượn sách</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="/returnbook">Trả sách</a>
+                <a href="/returnbook"><FaReply/> Trả sách</a>
             </li>
             <li className={cx('sidebar-item')}>
-                <a href="#">Thống kê</a>
+                <a href="/home"><FaRegChartBar/> Thống kê</a>
             </li >
-            <li className={cx('sidebar-item')}>
-                <a onClick={handleCLick}>Đăng xuất</a>
-            </li>
+            {/* <li className={cx('sidebar-item')}>
+                <a>Đăng xuất</a>
+            </li> */}
           </ul>
         </nav>
       </div>

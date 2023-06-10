@@ -26,7 +26,7 @@ function Login() {
                     window.localStorage.setItem("name", resp.data['fullName']);
                     window.localStorage.setItem("token", resp.data['token']);
                     setErr(false);
-                    navigate('/book')
+                    navigate('/member')
                 } else{
                    
                     navigate('/login')

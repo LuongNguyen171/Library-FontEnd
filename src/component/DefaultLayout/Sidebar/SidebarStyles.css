@@ -55,13 +55,9 @@
     align-items: center;
     text-align: left;
     margin: 5px 0px;
-    text-decoration-color: rgb(222, 228, 238);
-    text-decoration-style: solid;
-    text-decoration-thickness: auto;
     text-decoration: none;
-}
-.sidebar-item:hover{
-    background-color: rgb(100, 116, 139);
+    line-height: 20px;
+    font-weight: 400;
 }
 
 .sidebar-item a{
@@ -69,4 +65,11 @@
     color: rgb(222, 228, 238);
     padding: 8px 16px;
     width: 100%;
+}
+
+.sidebar-active{
+    background-color: rgb(100, 116, 139);
+}
+.sidebar-item:hover{
+    background-color: rgb(100, 116, 139);
 }

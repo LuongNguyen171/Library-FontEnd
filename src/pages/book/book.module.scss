@@ -1,49 +1,27 @@
 .book-table {
-
   font-family: Arial, Helvetica, sans-serif;
 
   border-collapse: collapse;
 
   width: 100%;
-
 }
 
-
-
-
 .book-table td,
-
 .book-table th {
-
   border: 1px solid #ddd;
 
   padding: 8px;
-
 }
-
-
-
 
 .book-table tr:nth-child(even) {
-
   background-color: #f2f2f2;
-
 }
-
-
-
 
 .book-table tr:hover {
-
   background-color: #ddd;
-
 }
 
-
-
-
 .book-table th {
-
   padding-top: 12px;
 
   padding-bottom: 12px;
@@ -53,14 +31,9 @@
   background-color: #04aa6d;
 
   color: white;
-
 }
 
-
-
-
 .title {
-
   text-align: center;
 
   font-size: 32px;
@@ -70,47 +43,32 @@
   text-transform: uppercase;
 
   font-weight: 600;
-
 }
 
-
-
-
-.btn-add {
-
-  float: right;
-
-  margin-bottom: 10px;
-
-  i {
-
-    margin-right: 5px;
-
+  .btn-add {
+    color: white;
+    float: right;
+    margin-bottom: 10px;
+    .icon-add {
+      margin: 0 5px 3px 0;
+    }
   }
 
-}
-
-
-
-
-.icon {
-
-  .icon-edit {
-
+  .icon-update {
     cursor: pointer;
-
     color: #04aa6d;
-
-    margin: 0 15px;
-
   }
 
   .icon-delete {
-
     cursor: pointer;
-
     color: red;
-
   }
 
-}
+  .icon-wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    height: 41px;
+    align-items: center;
+  }
+

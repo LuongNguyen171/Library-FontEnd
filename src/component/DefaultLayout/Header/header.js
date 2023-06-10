@@ -5,19 +5,11 @@ import {BsPerson} from 'react-icons/bs'
 import {AiOutlineSetting} from 'react-icons/ai'
 import {SlLogout} from 'react-icons/sl'
 import Avatar from '../../../assets/avatar.png'
-import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-function Header() {
+function Header({handleCLick}) {
 
-    const navigate = useNavigate();
-
-    // const logout = (e) => {
-    //     window.localStorage.removeItem("name");
-    //     window.localStorage.removeItem("token");
-    //     navigate("/login");
-    // }
 
 
   return (
@@ -35,8 +27,7 @@ function Header() {
                 <Dropdown.Item><BsPerson size={'18px'}/> Thông tin</Dropdown.Item>
                 <Dropdown.Item ><AiOutlineSetting size={'18px'}/> Cài đặt</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item ><SlLogout size={'15px'} 
-                // onClick={(e) => logout(e)}
+                <Dropdown.Item onClick={handleCLick}><SlLogout size={'15px'} 
                 /> Đăng xuất</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

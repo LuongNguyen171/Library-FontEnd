@@ -33,14 +33,19 @@ const Choosen = (chosoe) => {
       handleDialog( "", false)
   }
 }
+
+// const toggleNotificationModal = () => {
+//   setDialog("", !dialog.isLoading);
+// };
+
   return (
     <div className={cx("wrapper")}>
-      <Siderbar handleCLick={handleCLick}></Siderbar>
+      <Siderbar></Siderbar>
       <div className={cx("body")}>
-        <Header/>
+        <Header handleCLick={handleCLick}/>
         <div className={cx("content")}>{children}</div>
       </div>
-      { dialog.isLoading && <Dialog onDialog={Choosen} message = {dialog.message} title={'Đăng xuất'}/>}
+      { dialog.isLoading && <Dialog onDialog={Choosen} message = {dialog.message} title={'Đăng xuất'} danger={'Oke'}/>}
     </div>
   );
 }

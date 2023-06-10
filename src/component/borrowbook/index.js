@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import './style.css';
@@ -5,24 +6,22 @@ import './style.css';
 function BorrowBookForm() {
   const [memberId, setMemberId] = useState('');
   const [bookIds, setBookIds] = useState([]);
-  const [dateBorrow, setDateBorrow] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [errorModalVisible, setErrorModalVisible] = useState(false);
+  const [dateBorrow, setDateBorrow] = useState(new Date());
+  const [showDialog, setShowDialog] = useState(false);
+  const [errorDialogVisible, setErrorDialogVisible] = useState(false);
 
   const handleBorrowBook = () => {
-    if (!memberId || bookIds.length === 0) {
-      setErrorModalVisible(true);
+    if (!dateBorrow || !memberId || bookIds.length === 0) {
+      setErrorDialogVisible(true);
       return;
     }
 
-    setShowModal(true);
+    setShowDialog(true);
   };
 
   const handleConfirmBorrow = () => {
-    const token = window.localStorage.getItem("token");
-    console.log(token)
-  // const token  = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwaHVvY0BnbWFpbC5jb20iLCJpYXQiOjE2ODYyOTU5NzcsImV4cCI6MTY4NjM4MjM3N30.n_MP0kHIiu5ZGPxFEY7WoL6TdKK5seMNrrG6uklLX9o'
-    
+    const token = window.localStorage.getItem('token');
+
     const borrowPromises = bookIds.map((bookId) =>
       axios.post(
         'http://localhost:8080/api/v1/memberbook/add',
@@ -42,15 +41,15 @@ function BorrowBookForm() {
     Promise.all(borrowPromises)
       .then((responses) => {
         console.log(responses);
-        setShowModal(false);
+        setShowDialog(false);
         setMemberId('');
         setBookIds([]);
         setDateBorrow('');
       })
       .catch((error) => {
         console.error(error);
-        setShowModal(false);
-        setErrorModalVisible(true);
+        setShowDialog(false);
+        setErrorDialogVisible(true);
       });
   };
 
@@ -65,11 +64,10 @@ function BorrowBookForm() {
   };
 
   return (
-   <div className='wrapperborrow'>
-     <div className="borrow-book-form">
-      <h2>Borrow Book</h2>
+    <div className="borrow-book-form">
+      <h2>Thông tin mượn sách</h2>
       <div className="form-group">
-        <label htmlFor="memberId">Member ID:</label>
+        <label htmlFor="memberId">Mã khách hàng:</label>
         <input
           type="text"
           id="memberId"
@@ -79,7 +77,7 @@ function BorrowBookForm() {
       </div>
       {bookIds.map((bookId, index) => (
         <div className="form-group" key={index}>
-          <label htmlFor={`bookId-${index}`}>Book ID:</label>
+          <label htmlFor={`bookId-${index}`}>Mã sách:</label>
           <input
             type="text"
             id={`bookId-${index}`}
@@ -89,10 +87,10 @@ function BorrowBookForm() {
         </div>
       ))}
       <button className="btn-add" onClick={handleAddBookId}>
-        Add Book
+        Thêm sách
       </button>
       <div className="form-group">
-        <label htmlFor="dateBorrow">Date Borrow:</label>
+        <label htmlFor="dateBorrow">Ngày mượn sách:</label>
         <input
           type="date"
           id="dateBorrow"
@@ -101,47 +99,40 @@ function BorrowBookForm() {
         />
       </div>
       <button className="btn-borrow" onClick={handleBorrowBook}>
-        Borrow
+        Mượn sách
       </button>
 
-      {/* Modal for confirmation */}
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Confirm Borrow</h3>
-            <p>Are you sure you want to borrow these books?</p>
-            <div className="modal-actions">
+      {/* Dialog for confirmation */}
+      {showDialog && (
+        <div className="dialog-overlay">
+          <div className="dialog-content">
+            <h3>Xác nhận mượn sách</h3>
+            <p>Vui lòng xác nhận thao tác mượn sách !</p>
+            <div className="dialog-actions">
               <button className="btn-confirm" onClick={handleConfirmBorrow}>
-                Confirm
+                Xác nhận
               </button>
-              <button
-                className="btn-cancel"
-                onClick={() => setShowModal(false)}
-              >
-                Cancel
+              <button className="btn-cancel" onClick={() => setShowDialog(false)}>
+                Hủy 
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Error modal */}
-      {errorModalVisible && (
-        <div className="modal-overlay error">
-          <div className="modal-content error">
-            <h3>Error</h3>
-            <p>Please enter a member ID and select at least one book to borrow.</p>
-            <button
-              className="btn-close"
-              onClick={() => setErrorModalVisible(false)}
-            >
-              Close
+      {/* Error dialog */}
+      {errorDialogVisible && (
+        <div className="dialog-overlay error">
+          <div className="dialog-content error">
+            <h3>Thông báo lỗi !</h3>
+            <p>Vui lòng kiểm tra lại thông tin khách hàng và thông tin sách !</p>
+            <button className="close" onClick={() => setErrorDialogVisible(false)}>
+              Thoát
             </button>
           </div>
         </div>
       )}
     </div>
-   </div>
   );
 }
 

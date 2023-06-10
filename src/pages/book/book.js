@@ -1,194 +1,143 @@
 import classNames from 'classnames/bind';
-
 import styles from './book.module.scss';
-
 import React, { useEffect, useState } from 'react';
-
 import ModalAddBook from './ModalAddBook';
-
 import ModalUpdateBook from './ModalUpdateBook';
-import {FaRegEdit} from 'react-icons/fa'
-import {AiFillDelete} from 'react-icons/ai'
-import {GrAdd} from 'react-icons/gr'
+import ModalDeleteBook from './ModalDeleteBook';
+import ModalNotification from './ModalNotification';
+import { FaRegEdit } from 'react-icons/fa';
+import { AiFillDelete } from 'react-icons/ai';
+import { IoAddSharp } from 'react-icons/io5';
 
 import { getAllBooksAPI, addNewBookAPI, deleteBookAPI, updateBookAPI } from '../../api/bookApi';
 
 const cx = classNames.bind(styles);
 
-
-
-
 const Book = () => {
-
   const [books, setBooks] = useState([]);
+
+  const [notification, setNotification] = useState('');
+
+  const [showNotificationModal, setShowNotificationModal] = useState(false);
 
   const [showAddModal, setShowAddModal] = useState(false);
 
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   const [bookEdit, setBookEdit] = useState({});
 
-
-
-
   const getAllBooks = async () => {
-
     let response = await getAllBooksAPI();
 
     if (response && response.status === 200) {
-
       setBooks(response.data);
-
     }
-
   };
-
-
-
 
   useEffect(() => {
-
     getAllBooks();
-
   }, []);
 
-
-
+  const toggleNotificationModal = () => {
+    setShowNotificationModal(!showNotificationModal);
+  };
 
   const toggleAddModal = () => {
-
+    setNotification('Sách đã được thêm thành công!');
     setShowAddModal(!showAddModal);
-
   };
-
-
-
 
   const toggleUpdateModal = () => {
-
+    setNotification('Sách đã được cập nhật thành công!');
     setShowUpdateModal(!showUpdateModal);
-
   };
 
-
-
+  const toggleDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+  };
 
   const createNewBook = async (data) => {
-
     try {
-
       let response = await addNewBookAPI(data);
-
       if (response && response.status === 200) {
-
         await getAllBooks();
-
-        setShowAddModal(false);
-
+        setShowNotificationModal(true);
       }
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
 
+  const handleDeleteBook = (book) => {
+    setShowDeleteModal(true);
+    setBookEdit(book);
+  };
 
-
-
-  const handleDeleteBook = async (book) => {
-
+  const doDeleteBook = async (id) => {
     try {
-      alert(1)
-
-      let response = await deleteBookAPI(book.bookId);
-
+      let response = await deleteBookAPI(id);
       if (response && response.status === 200) {
-
         await getAllBooks();
-
       }
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
-
-
-
 
   const handleUpdateBook = (book) => {
-
     setShowUpdateModal(true);
-
     setBookEdit(book);
-
   };
 
-
-
+  const doUpdateBook = async (updatedBook) => {
+    try {
+      let response = await updateBookAPI(updatedBook);
+      if (response && response.status === 200) {
+        await getAllBooks();
+        setShowNotificationModal(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-
     <div className={cx('book-container')}>
+      <ModalNotification isOpen={showNotificationModal} toggleModal={toggleNotificationModal} notification={notification} />
 
       <ModalAddBook isOpen={showAddModal} toggleModal={toggleAddModal} createNewBook={createNewBook} />
 
-      <ModalUpdateBook isOpen={showUpdateModal} toggleModal={toggleUpdateModal} currentBook={bookEdit} />
+      <ModalUpdateBook isOpen={showUpdateModal} toggleModal={toggleUpdateModal} currentBook={bookEdit} updateBook={doUpdateBook} />
+
+      <ModalDeleteBook isOpen={showDeleteModal} toggleModal={toggleDeleteModal} currentBook={bookEdit} deleteBook={doDeleteBook} />
 
       <div className={cx('title')}>Quản lý sách</div>
 
       <div className={cx('btn-add')}>
-
         <button className={cx('btn', 'btn-primary')} onClick={toggleAddModal}>
-          <GrAdd/>
-
-          {/* <i className="fa-solid fa-plus"></i> */}
-
-          Thêm sách
-
+          <IoAddSharp size={'24px'} className={cx('icon-add')} />
+          Thêm
         </button>
-
       </div>
 
       <table className={cx('book-table')}>
-
         <tbody>
-
           <tr>
-
             <th>Id</th>
-
             <th>Tên sách</th>
-
             <th>Tác giả</th>
-
             <th>Thể loại</th>
-
             <th>Nhà xuất bản</th>
-
             <th>Giá mượn sách</th>
-
-            <th>Actions</th>
-
+            <th>Thao tác</th>
           </tr>
 
-
-
-
           {books &&
-
             books.map((book, index) => {
-
               return (
-
-                <tr key={index}>
-
+                <tr key={index} >
                   <td>{book.bookId}</td>
 
                   <td>{book.bookName}</td>
@@ -201,33 +150,17 @@ const Book = () => {
 
                   <td>{book.bookPriceBorrow}</td>
 
-                  <td className={cx('icon')}>
-                    <FaRegEdit onClick={() => handleUpdateBook(book)}/>
-                    <AiFillDelete onClick={() => handleDeleteBook(book)}/>
-
-                    {/* <i onClick={() => handleUpdateBook(book)} className={cx('fa-solid', 'fa-pen-to-square', 'icon-edit')}></i>
-
-                    <i onClick={() => handleDeleteBook(book)} className={cx('fa-sharp', 'fa-solid', 'fa-trash', 'icon-delete')}></i> */}
-
+                  <td className={cx("icon-wrapper")}>
+                    <FaRegEdit size={'20px'} className={cx('icon-update')} onClick={() => handleUpdateBook(book)} />
+                    <AiFillDelete  size={'20px'} className={cx('icon-delete')} onClick={() => handleDeleteBook(book)} />
                   </td>
-
                 </tr>
-
               );
-
             })}
-
         </tbody>
-
       </table>
-
     </div>
-
   );
-
 };
-
-
-
 
 export default Book;

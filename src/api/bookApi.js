@@ -3,11 +3,12 @@ import axios from 'axios';
 
 
 
-
-
 const getAllBooksAPI = () => {
 
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
+
+
+
 
   return axios.get('http://localhost:8080/api/v1/books/list', {
 
@@ -25,7 +26,10 @@ const getAllBooksAPI = () => {
 
 
 const addNewBookAPI = (data) => {
-  const token = window.localStorage.getItem("token");
+
+  const token = window.localStorage.getItem('token');
+
+
 
 
   return axios.post('http://localhost:8080/api/v1/books/add', data, {
@@ -44,7 +48,10 @@ const addNewBookAPI = (data) => {
 
 
 const deleteBookAPI = (bookId) => {
-  const token = window.localStorage.getItem("token");
+
+  const token = window.localStorage.getItem('token');
+
+
 
 
   return axios.delete('http://localhost:8080/api/v1/books/delete', {
@@ -54,6 +61,9 @@ const deleteBookAPI = (bookId) => {
       Authorization: `Bearer ${token}`,
 
     },
+
+
+
 
     params: {
 
@@ -68,11 +78,14 @@ const deleteBookAPI = (bookId) => {
 
 
 
-const updateBookAPI = (bookId) => {
-  const token = window.localStorage.getItem("token");
+const updateBookAPI = (data) => {
+
+  const token = window.localStorage.getItem('token');
 
 
-  return axios.put('http://localhost:8080/api/v1/books/update', {
+
+
+  return axios.put('http://localhost:8080/api/v1/books/update', data, {
 
     headers: {
 
@@ -80,9 +93,12 @@ const updateBookAPI = (bookId) => {
 
     },
 
+
+
+
     params: {
 
-      bookId: bookId,
+      bookId: data.bookId,
 
     },
 

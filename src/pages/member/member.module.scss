@@ -1,46 +1,104 @@
-.wraper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .title{
-        align-items: center;
-    }
+// .wraper{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .header{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     .title{
+//         align-items: center;
+//     }
     
-}
-.body{
+// }
+// .body{
     
-     width: 100%;
+//      width: 100%;
     
-     .btn_wrap{
-         text-align: end;
-         width: 100%;
+//      .btn_wrap{
+//          text-align: end;
+//          width: 100%;
         
-     }
-    }
-    .btn{
-       color: white;
-       height: 40px;
-       width: 100px;
-       font-weight: 600;
-       outline: none;
-       margin-left: 10px;
-       background-color: green;
-       border: none;
-       border-radius: 5px;
-       .fontAdd_Icon{
-        margin-right: 3px;
-       }
-       &:hover{
-        opacity: 0.8;
-       }
+//      }
+//     }
+//     .btn-add{
+//        color: white;
+//        height: 40px;
+//        width: 100px;
+//        font-weight: 600;
+//        outline: none;
+//        margin-left: 10px;
+//        background-color: green;
+//        border: none;
+//        border-radius: 5px;
+//        .fontAdd_Icon{
+//         margin-right: 3px;
+//        }
+//        &:hover{
+//         opacity: 0.8;
+//        }
       
-    }
-    
-    
+//     }
+//     .title {
 
+//         text-align: center;
+      
+      
+      
+      
+//         font-size: 32px;
+      
+      
+      
+      
+//         margin-bottom: 20px;
+      
+      
+      
+      
+//         text-transform: uppercase;
+      
+      
+      
+      
+//         font-weight: 600;
+      
+//       }
+      
+      
+
+//       .btn-add {
+
+//         float: right;
+      
+//         margin-bottom: 10px;
+      
+//         .icon-add {
+      
+//           margin: 0 5px 3px 0;
+      
+//         }
+      
+//       }
+
+.title {
+  text-align: center;
+
+  font-size: 32px;
+
+  margin-bottom: 20px;
+
+  text-transform: uppercase;
+
+  font-weight: 600;
+}
+.btn-add {
+  color: white;
+  float: right;
+  margin-bottom: 10px;
+  .icon-add {
+    margin: 0 5px 3px 0;
+  }
+}
