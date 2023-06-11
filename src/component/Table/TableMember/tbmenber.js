@@ -271,6 +271,7 @@ function TableMember() {
                       icon={faPenToSquare}
 
                       onClick={(e) => {
+                        getDetail(member.memberId);
                         setIsShowUpdate(true)
                       }}
 
@@ -293,7 +294,10 @@ function TableMember() {
 
                     <FontAwesomeIcon
 
-                      onClick={() => setShowDeleteModal(true)}
+                      onClick={(e) => {
+                        setIdMember(member.memberId);
+                        setShowDeleteModal(true)
+                      }}
 
                       className={cx("icon", "icon-delete")}
 

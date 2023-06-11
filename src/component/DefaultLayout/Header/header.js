@@ -10,13 +10,13 @@ const cx = classNames.bind(styles);
 
 function Header({handleCLick}) {
 
-
+  const name = window.localStorage.getItem('name');
 
   return (
     <header className={cx('header')}>
         <div className={cx('content-header')}>
             <div className={cx('info-admin')}>
-              <div className={cx('name-admin')}>Kieu Minh Phuoc</div>
+              <div className={cx('name-admin')}>{name}</div>
               <div className={cx('role-admin')}>Admin</div>
             </div>
             <img className={cx('avatar-admin')} src={Avatar} alt="avatar"></img>
